@@ -61,17 +61,29 @@ public class Trajectory : MonoBehaviour
 	public void UpdateDots(Vector3 ballPos, Vector2 forceApplied)
 	{
 		timeStamp = dotSpacing;
+		bool notGrond = true;
 		for (int i = 0; i < dotsNumber; i++)
 		{
 			pos.x = (ballPos.x + forceApplied.x * timeStamp);
 			pos.y = (ballPos.y + forceApplied.y * timeStamp) - (Physics2D.gravity.magnitude * timeStamp * timeStamp) / 2f;
 
-			//you can simlify this 2 lines at the top by:
-			//pos = (ballPos+force*time)-((-Physics2D.gravity*time*time)/2f);
-			//
-			//but make sure to turn "pos" in Ball.cs to Vector2 instead of Vector3	
-
-			dotsList[i].position = pos;
+			if(notGrond && i >= 1)
+			{ 
+				RaycastHit2D isGround = Physics2D.Linecast(
+					dotsList[i - 1].transform.position, pos,
+					LayerMask.GetMask("Ground"));
+				notGrond &= !isGround;
+				dotsList[i].gameObject.SetActive(true);
+				if (isGround)
+					dotsList[i].position = isGround.point;
+				else
+					dotsList[i].position = pos;
+			}
+			else
+            {
+				dotsList[i].gameObject.SetActive(notGrond);
+				dotsList[i].position = pos;
+			}
 			timeStamp += dotSpacing;
 		}
 	}
