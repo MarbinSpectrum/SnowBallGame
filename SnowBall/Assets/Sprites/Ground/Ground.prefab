@@ -166,19 +166,19 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 260103837eb8ee44994480e149810acf, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 553d78474d4943f48a7bc545f5fc1202, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 97e63fe8b181f714ab22738dc9d92026, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 37bbc426432719943b396848e3813b19, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 56f4a67f08ff7014b876675c32cc4c27, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 4e780a6aed4a38941b6244f1d17d56c7, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 201f6ff7020f52a4c87ecbf3b7893812, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: f930b321f5f949a47a9febce6b0c070b, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 29659f551e653a44db6138bcd2a37d2d, type: 2}
