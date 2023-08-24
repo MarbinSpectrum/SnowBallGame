@@ -48,6 +48,9 @@ public class ControlMng : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         if (canControll)
         {
             if (Input.GetMouseButtonDown(0))

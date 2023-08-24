@@ -24,6 +24,9 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         isGround = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y - 0.1f) +
             new Vector2(col.offset.x, col.offset.y),
@@ -45,7 +48,7 @@ public class Ball : MonoBehaviour
 
         if (size < 0.01f)
         {
-            GameMng.ReStart();
+            GameMng.GameOver();
             return;
         }
     }
@@ -56,7 +59,9 @@ public class Ball : MonoBehaviour
     {
         //물체에 force만큼의 힘을 준다.
         rb.AddForce(force, ForceMode2D.Impulse);
-        float distance = Vector2.Distance(Vector2.zero, force) * rotateValue;
+
+        float distance = Vector2.Distance(Vector2.zero, force) 
+            * transform.localScale.x * rotateValue;
 
         if (force.x > 0)
             rb.AddTorque(-distance);
@@ -87,9 +92,16 @@ public class Ball : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (Time.timeScale == 0)
+            return;
+
         if(collision.transform.gameObject.layer == LayerMask.NameToLayer("DeadZone"))
         {
-            GameMng.ReStart();
+            GameMng.GameOver();
+        }
+        else if (collision.transform.gameObject.layer == LayerMask.NameToLayer("ClearPoint"))
+        {
+            GameMng.GoNext();
         }
     }
 }

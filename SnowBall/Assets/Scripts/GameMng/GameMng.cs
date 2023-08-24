@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMng : MonoBehaviour
 {
@@ -10,38 +11,39 @@ public class GameMng : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         if (Instance == null)
         {
             Instance = this;
-
+            DontDestroyOnLoad(gameObject);
         }
-
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     #endregion
 
-    private Vector3 startPos;
-    private Vector3 cameraPos;
-    [SerializeField] private  Ball    ball;
-    [SerializeField] private  Camera  cam;
+    public int stageValue;
 
-    private void Start()
+    public static void GameOver()
     {
-        startPos = ball.transform.position;
-        cameraPos = cam.transform.position;
+        Time.timeScale = 0;
+
+        GameObject gameOverUI = Resources.Load<GameObject>("UI/GameOver");
+        Instantiate(gameOverUI);
     }
 
-    public static void ReStart() => Instance.ReStartGame();
-    private void ReStartGame()
+    public static void ReStart()
     {
-        //공위치 시작점으로
-        ball.transform.position = startPos;
-        ball.transform.rotation = Quaternion.identity;
-        ball.transform.localScale = Vector3.one;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
-        //카메라 위치 시작점으로
-        cam.transform.position = cameraPos;
-
-        ControlMng.lnit();
+    public static void GoNext()
+    {
+        Instance.stageValue++;
+        string stageName = string.Format("Stage{0}", Instance.stageValue);
+        SceneManager.LoadScene(stageName);
     }
 }
