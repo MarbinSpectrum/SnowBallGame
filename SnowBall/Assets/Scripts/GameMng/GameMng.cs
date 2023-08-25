@@ -15,6 +15,7 @@ public class GameMng : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            StageData.LoadStageData();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -24,8 +25,6 @@ public class GameMng : MonoBehaviour
     }
 
     #endregion
-
-    public int stageValue;
 
     public static void GameOver()
     {
@@ -42,8 +41,8 @@ public class GameMng : MonoBehaviour
 
     public static void GoNext()
     {
-        Instance.stageValue++;
-        string stageName = string.Format("Stage{0}", Instance.stageValue);
+        int stageNum = StageData.GetNumber(SceneManager.GetActiveScene().name) + 1;
+        string stageName = StageData.GetStageName(stageNum);
         SceneManager.LoadScene(stageName);
     }
 }
