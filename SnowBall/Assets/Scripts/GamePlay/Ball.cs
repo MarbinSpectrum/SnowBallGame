@@ -7,7 +7,7 @@ public class Ball : MonoBehaviour
     [HideInInspector] public    Rigidbody2D        rb;
     [HideInInspector] public    CircleCollider2D   col;
 
-    [SerializeField] private    float              rotateValue;
+    [SerializeField] private    Ball_Data           ballData;
     [SerializeField] private    SoundObj           jumpSound;
     [SerializeField] private    SoundObj           downSound;
 
@@ -15,10 +15,14 @@ public class Ball : MonoBehaviour
 
     public RaycastHit2D isGround { get; private set; }
     public RaycastHit2D isShadow { get; private set; }
+    public RaycastHit2D isSnow   { get; private set; }
 
     private void Awake()
     {
         rb  = GetComponent<Rigidbody2D>();
+        rb.sharedMaterial.bounciness = ballData.bounciness;
+        rb.sharedMaterial.friction   = ballData.friction;
+
         col = GetComponent<CircleCollider2D>();
     }
 
@@ -29,18 +33,34 @@ public class Ball : MonoBehaviour
 
         isGround = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y - 0.1f) +
-            new Vector2(col.offset.x, col.offset.y),
+            new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
             col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("Ground"));
 
         isShadow = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y) +
-            new Vector2(col.offset.x, col.offset.y),
+            new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
             col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("Shadow"));
 
+        isSnow = Physics2D.CircleCast(
+            new Vector2(transform.position.x, transform.position.y) +
+            new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
+            col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("SnowZone"));
+
         float size = transform.localScale.x;
-        if (isShadow == false)
+
+        if(isSnow)
         {
-            size -= Time.timeScale * 0.0003f;
+            size += Time.timeScale * ballData.erectionValue;
+            size = Mathf.Min(1, size);
+            transform.localScale = Vector3.one * size;
+            if(isGround)
+            {
+                transform.position += Vector3.up* Time.timeScale * ballData.erectionValue;
+            }
+        }
+        else if (isShadow == false)
+        {
+            size -= Time.timeScale * ballData.meltValue;
             transform.localScale = Vector3.one * size;
         }
 
@@ -61,7 +81,7 @@ public class Ball : MonoBehaviour
         rb.AddForce(force, ForceMode2D.Impulse);
 
         float distance = Vector2.Distance(Vector2.zero, force) 
-            * transform.localScale.x * rotateValue;
+            * transform.localScale.x * ballData.rotateValue;
 
         if (force.x > 0)
             rb.AddTorque(-distance);

@@ -1648,7 +1648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   col: {fileID: 0}
-  rotateValue: 5
+  ballData: {fileID: 11400000, guid: 0b816d6fbe148b245b73406ca7a5556a, type: 2}
   jumpSound: {fileID: 1487010924}
   downSound: {fileID: 1824643056}
 --- !u!58 &1018604704
@@ -1696,7 +1696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee6a6d729001f224d8766ea53b1f700c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageValue: 1
 --- !u!4 &1058928152
 Transform:
   m_ObjectHideFlags: 0
