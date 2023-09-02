@@ -23,14 +23,11 @@ public class Ball : MonoBehaviour
         rb.sharedMaterial.bounciness = ballData.bounciness;
         rb.sharedMaterial.friction   = ballData.friction;
 
-        col = GetComponent<CircleCollider2D>();
+        col = GetComponent<CircleCollider2D>();      
     }
 
     private void Update()
     {
-        if (Time.timeScale == 0)
-            return;
-
         isGround = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y - 0.1f) +
             new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
@@ -62,12 +59,17 @@ public class Ball : MonoBehaviour
         {
             size -= Time.timeScale * ballData.meltValue;
             transform.localScale = Vector3.one * size;
+            if (isGround)
+            {
+                transform.position -= Vector3.up * Time.timeScale * ballData.meltValue * 0.5f;
+            }
         }
 
         col.radius = COLLIDER_SIZE * size;
 
         if (size < 0.01f)
         {
+            gameObject.SetActive(false);
             GameMng.GameOver();
             return;
         }
@@ -77,6 +79,9 @@ public class Ball : MonoBehaviour
 
     public void Push(Vector2 force)
     {
+        if (rb == null)
+            return;
+
         //물체에 force만큼의 힘을 준다.
         rb.AddForce(force, ForceMode2D.Impulse);
 
@@ -94,12 +99,18 @@ public class Ball : MonoBehaviour
     public void ActivateRb()
     {
         //물체 물리 활성화
+        if (rb == null)
+            return;
+
         rb.isKinematic = false;
     }
 
     public void DesactivateRb()
     {
         //물체 물리 비활성화
+        if (rb == null)
+            return;
+
         rb.velocity = Vector3.zero;
         rb.angularVelocity = 0f;
         rb.isKinematic = true;
@@ -112,16 +123,15 @@ public class Ball : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Time.timeScale == 0)
-            return;
-
         if(collision.transform.gameObject.layer == LayerMask.NameToLayer("DeadZone"))
         {
             GameMng.GameOver();
+            gameObject.SetActive(false);
         }
         else if (collision.transform.gameObject.layer == LayerMask.NameToLayer("ClearPoint"))
         {
-            GameMng.GoNext();
+            GameMng.GameClear();
+            gameObject.SetActive(false);
         }
     }
 }

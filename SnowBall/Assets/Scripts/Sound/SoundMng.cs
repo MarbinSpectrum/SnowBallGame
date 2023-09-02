@@ -2,22 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundMng : MonoBehaviour
+public class SoundMng : MonoBehaviour, MngInter
 {
-    #region Singleton class: SoundMng
-
     public static SoundMng Instance;
 
-    private void Awake()
+    public void LoadMng()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            LoadSound();
-        }
+        Instance = this;
+        LoadSound();
     }
-
-    #endregion
 
     private Dictionary<string, AudioClip> seMap = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> bgmMap = new Dictionary<string, AudioClip>();

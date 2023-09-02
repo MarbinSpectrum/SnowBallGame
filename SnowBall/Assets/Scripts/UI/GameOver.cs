@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameOverUI : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
     public void ReStartGame() => GameMng.ReStart();
 }

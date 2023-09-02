@@ -5,11 +5,11 @@ using UnityEngine;
 public abstract class SoundObj : MonoBehaviour
 {
     [SerializeField] protected AudioClip clip;
-    [SerializeField] protected bool      playOnAwake;
+    [SerializeField] protected bool      playOnStart;
 
-    protected virtual void Awake() 
+    protected virtual void Start() 
     {
-        if (playOnAwake)
+        if (playOnStart)
             Play();
     }
 

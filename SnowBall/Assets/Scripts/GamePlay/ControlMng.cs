@@ -1,55 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlMng : MonoBehaviour
+public class ControlMng : MonoBehaviour, MngInter
 {
-    #region Singleton class: ControlMng
-
     public static ControlMng Instance;
+    public void LoadMng() => Instance = this;
 
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-    }
+    private Ball ball;
+    public Trajectory trajectory;
 
-    #endregion
-
-    private Camera                  cam;
-
-    public  Ball                    ball;
-    public  Trajectory              trajectory;
-
-    [SerializeField] 
-    private float                   pushForce = 4f;
     [SerializeField]
-    private float                   stopVelocity = 2f;
+    private float pushForce = 4f;
     [SerializeField]
-    private float                   distanceMax = 4f;
-    [SerializeField,Range(0,1f)]
+    private float stopVelocity = 2f;
+    [SerializeField]
+    private float distanceMax = 4f;
+    [SerializeField, Range(0, 1f)]
     private float decelerationValue = 0.1f;
 
-    private bool                    isDragging = false;
+    private bool isDragging = false;
 
-    private Vector2                 startPoint;
-    private Vector2                 endPoint;
-    private Vector2                 direction;
-    private Vector2                 force;
-    private float                   distance;
+    private Vector2 startPoint;
+    private Vector2 endPoint;
+    private Vector2 direction;
+    private Vector2 force;
+    private float distance;
 
-    public  bool                    canControll { get;  private set;  }
-    private bool                    downSoundFlag = false;
-    //----------------------------------------------------
-    private void Start()
-    {
-        lnit();
-    }
+    public bool  canControll { get; private set; }
+    private bool downSoundFlag = false;
 
     private void Update()
     {
-        if (Time.timeScale == 0)
+        if (ball == null || ball.gameObject.activeSelf == false)
+        {
+            //캐릭터 객체가 없어서 조종불가
             return;
+        }
 
         if (canControll)
         {
@@ -100,24 +85,29 @@ public class ControlMng : MonoBehaviour
 
     public static void lnit()
     {
+        GameObject ball = GameObject.Find("Ball");
+        if (ball != null)
+        {
+            Instance.ball = ball.GetComponent<Ball>();
+            Instance.ball.DesactivateRb();
+        }
+
         Instance.canControll = true;
         Instance.downSoundFlag = false;
-        Instance.cam = Camera.main;
-        Instance.ball.DesactivateRb();
     }
 
     //-Drag-----------------------------------------------
     private void OnDragStart()
     {
         ball.DesactivateRb();
-        startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+        startPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         trajectory.Show();
     }
 
     private void OnDrag()
     {
-        endPoint    = cam.ScreenToWorldPoint(Input.mousePosition);
+        endPoint    = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         distance    = Vector2.Distance(startPoint, endPoint);
         distance = Mathf.Min(distanceMax, distance);
 

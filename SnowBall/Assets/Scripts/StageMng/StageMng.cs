@@ -1,9 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class StageData : MonoBehaviour
+public class StageMng : MonoBehaviour, MngInter
 {
+    public static StageMng Instance;
+
+    public static int stageCnt { private set; get; }
+
+    public void LoadMng()
+    {
+        Instance = this;
+
+        LoadStageData();
+    }
+
     private static Dictionary<int, string> stageData = new Dictionary<int, string>();
     private static Dictionary<string, int> stageNum = new Dictionary<string, int>();
     public static void LoadStageData()
@@ -36,10 +48,17 @@ public class StageData : MonoBehaviour
             string stageName = values[1].Replace('\r', ' ').Trim();
             stageData[keyValue] = stageName;
             stageNum[stageName] = keyValue;
+            stageCnt++;
         }
     }
 
-    public static int GetNumber(string stageName)
+    public static int GetStageNumber()
+    {
+        string stageName = SceneManager.GetActiveScene().name;
+        return GetStageNumber(stageName);
+    }
+
+    public static int GetStageNumber(string stageName)
     {
         if (stageNum.ContainsKey(stageName))
             return stageNum[stageName];
@@ -51,5 +70,12 @@ public class StageData : MonoBehaviour
         if (stageData.ContainsKey(idx))
             return stageData[idx];
         return "";
+    }
+
+    public static void GoNextStage()
+    {
+        int stageNum = GetStageNumber() + 1;
+        string stageName = GetStageName(stageNum);
+        SceneManager.LoadScene(stageName);
     }
 }

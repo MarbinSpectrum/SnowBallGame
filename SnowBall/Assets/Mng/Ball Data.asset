@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ball Data
   m_EditorClassIdentifier: 
   rotateValue: 5
-  meltValue: 0.0005
+  meltValue: 0.0001
   erectionValue: 0.001
   bounciness: 0.5
   friction: 0.6
