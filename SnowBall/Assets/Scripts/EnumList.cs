@@ -7,4 +7,6 @@ public enum UI
     //** 게임 클리어 **/
     GameClear,
 
+    //** 별 UI **/
+    StarCnt,
 }

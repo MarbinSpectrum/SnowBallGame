@@ -10,7 +10,8 @@ public class UI_Mng : MonoBehaviour, MngInter
     public static void LoadUI(UI pUI)
     {
         string uiPath = string.Format("UI/{0}", pUI.ToString());
-        GameObject gameOverUI = Resources.Load<GameObject>(uiPath);
-        Instantiate(gameOverUI);
+        GameObject uiObj = Resources.Load<GameObject>(uiPath);
+
+        Instantiate(uiObj);
     }
 }

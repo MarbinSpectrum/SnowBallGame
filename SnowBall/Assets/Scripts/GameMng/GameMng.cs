@@ -10,6 +10,7 @@ public class GameMng : MonoBehaviour, MngInter
 
     private static PlayData playData;
 
+    public static int nowStar;
 
     public void LoadMng()
     {
@@ -51,7 +52,9 @@ public class GameMng : MonoBehaviour, MngInter
 
     public static void GameStart()
     {
+        nowStar = 0;
         ControlMng.lnit();
+        UI_Mng.LoadUI(UI.StarCnt);
     }
 
     public static void GameOver()
@@ -66,7 +69,15 @@ public class GameMng : MonoBehaviour, MngInter
 
     public static void GameClear()
     {
-        playData.clearStage = Mathf.Max(playData.clearStage, StageMng.GetStageNumber());
+        int stageNum = StageMng.GetStageNumber();
+
+        //해당 스테이지별 갱신
+        int maxStar = playData.stageStar[stageNum];
+        playData.stageStar[stageNum] = Mathf.Max(maxStar, nowStar);
+
+        //클리어 스테이지 갱신
+        playData.clearStage = Mathf.Max(playData.clearStage, stageNum);
+
         SavePlayData();
 
         UI_Mng.LoadUI(UI.GameClear);

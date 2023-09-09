@@ -133,5 +133,10 @@ public class Ball : MonoBehaviour
             GameMng.GameClear();
             gameObject.SetActive(false);
         }
+        else if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Star"))
+        {
+            collision.gameObject.SetActive(false);
+            GameMng.nowStar++;
+        }
     }
 }
