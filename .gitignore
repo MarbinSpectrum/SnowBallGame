@@ -7,7 +7,8 @@ SnowBall/[Bb]uilds/
 SnowBall/[Ll]ogs/
 SnowBall/[Mm]emoryCaptures/
 SnowBall/Logs
-
+SnowBall/Assets/Resources/PlayData.json
+SnowBall/Assets/Resources/PlayData.json.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # [Aa]ssets/AssetStoreTools*
