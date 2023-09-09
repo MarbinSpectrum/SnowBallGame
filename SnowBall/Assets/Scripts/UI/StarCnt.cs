@@ -25,6 +25,7 @@ public class StarCnt : MonoBehaviour
             }
         }
     }
+
     private void Update()
     {
         UpdateUI();
