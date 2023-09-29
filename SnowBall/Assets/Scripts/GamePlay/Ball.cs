@@ -65,6 +65,15 @@ public class Ball : MonoBehaviour
             }
         }
 
+        if(isShadow)
+        {
+            SunEffect.OffEffect();
+        }
+        else
+        {
+            SunEffect.RunEffect();
+        }
+
         col.radius = COLLIDER_SIZE * size;
 
         if (size < 0.01f)

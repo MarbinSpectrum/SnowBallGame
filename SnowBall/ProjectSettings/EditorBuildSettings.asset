@@ -11,11 +11,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/stage1.unity
     guid: b6901822df5d56e42a933698677f1919
-  - enabled: 1
-    path: Assets/Scenes/stage2.unity
-    guid: b3eed35e472ee474f877aa203fd42977
   - enabled: 0
-    path: Assets/Scenes/TestStage.unity
-    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: af244073380cae04590af501ad8c3fb3, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: b6748252742da13469327409d191598d, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 76d09514b66cf834ca20b5c6c496e663, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 08c370aee5330d4468e0cfcb646fa149, type: 2}

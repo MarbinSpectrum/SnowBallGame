@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -121,11 +121,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,11 +142,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,11 +163,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: Snow_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 96
+        y: 96
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,18 +204,18 @@ TextureImporter:
       name: Snow_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6d81c0978caac545b5e56a6601ff53c
+      spriteID: 2cdffbf4bd256374d924c6456b06919e
       internalID: 1004363470
       vertices: []
       indices: 
@@ -225,18 +225,18 @@ TextureImporter:
       name: Snow_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b312ab02df2f41647ac6a52eab569d47
+      spriteID: 7fa49945a9e8a934a90c8f1823e89048
       internalID: 1209265187
       vertices: []
       indices: 
@@ -246,18 +246,18 @@ TextureImporter:
       name: Snow_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 64
+        y: 64
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e32e1499a522eaf46b52abdbfed77ab2
+      spriteID: 85534d7f6f164b64c8302f000a81d61b
       internalID: 729555293
       vertices: []
       indices: 
@@ -267,18 +267,18 @@ TextureImporter:
       name: Snow_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 96
+        y: 64
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b9b9b430cbc8da438c0eaf978b6f1f1
+      spriteID: d0b367fa2a131f7409fe1f3a723ae7c8
       internalID: 1689829019
       vertices: []
       indices: 
@@ -288,7 +288,175 @@ TextureImporter:
       name: Snow_8
       rect:
         serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b484052deea4e44a16ea8dc4fc5d36
+      internalID: 858613783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbdc4d8b7aea66d4fb062b75c08a4bcf
+      internalID: -720343070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_10
+      rect:
+        serializedVersion: 2
         x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7069af7a6cd277f4b9b0e2cebbc72439
+      internalID: -889079487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad55b823efb4b649bce20175431c7ef
+      internalID: -1534192985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8441d8d2df8638a43812a03023677287
+      internalID: -1936191464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4c4b2dec8a7384ca568e1c59a78c99
+      internalID: 409593327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1992691ca0fcfe409e624e13d120930
+      internalID: -1772538173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05711109cf3ea3540bd7a65dba046efa
+      internalID: 1834721655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snow_16
+      rect:
+        serializedVersion: 2
+        x: 128
         y: 0
         width: 32
         height: 32
@@ -299,8 +467,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04574481bfb290c47bbb3e96fba3162d
-      internalID: 858613783
+      spriteID: 75f106b85ab930e419adbf4dbd92f6c7
+      internalID: -1961726368
       vertices: []
       indices: 
       edges: []
@@ -316,15 +484,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Snow_10: -889079487
+      Snow_14: -1772538173
       Snow_7: 1689829019
       Snow_5: 1209265187
+      Snow_11: -1534192985
       Snow_2: 1721431157
       Snow_0: -1071429758
+      Snow_13: 409593327
+      Snow_16: -1961726368
       Snow_3: -1856851896
       Snow_1: -824695148
       Snow_8: 858613783
       Snow_4: 1004363470
       Snow_6: 729555293
+      Snow_12: -1936191464
+      Snow_15: 1834721655
+      Snow_9: -720343070
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4c3cafe3351ef5643a833af7a9b3add3
+guid: 377d3f026e14e6f4c8aa7fdb4027c9da
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,17 +42,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 12, z: 0, w: 8}
+  spriteBorder: {x: 15, y: 27, z: 13, w: 13}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -115,8 +115,117 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
-    outline: []
+    sprites:
+    - serializedVersion: 2
+      name: button_ui_1_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 99
+        width: 50
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 12, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7165a517732c4a84397b76dfc99f4b7f
+      internalID: 1221598831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_ui_1_1
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 123
+        width: 43
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aeaec60b36c0c7408f71c9e1b27df86
+      internalID: -122678163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_ui_1_2
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 13
+        width: 50
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 8, z: 5, w: 9}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29076ef47392d294d897eb222120494b
+      internalID: -436234442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_ui_1_3
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 79
+        width: 30
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ee10b8149363147b9eff6e5daf949d
+      internalID: -785202869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_ui_1_4
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 42
+        width: 36
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c6e863d169c9e4b910e4fbd4ceb553
+      internalID: -47095037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -90.5, y: -27}
+      - {x: -90.5, y: 34}
+      - {x: 92.5, y: 34}
+      - {x: 92.5, y: -27}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -126,7 +235,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      button_ui_1_3: -785202869
+      button_ui_1_4: -47095037
+      button_ui_1_1: -122678163
+      button_ui_1_2: -436234442
+      button_ui_1_0: 1221598831
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
