@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 51a8c26079d057941be6a5454bb63985
+guid: 512930d754ca98f48b083066968d7410
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
@@ -117,7 +117,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Snow_Back_0
+      name: IceCave_Back_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4d845f9300fb2c43bdf1519b8839548
+      internalID: 1537525355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCave_Back_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dde8e6dd0aad4174db76abe44cad15cd
+      internalID: 1178803164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCave_Back_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b52709816d2059b42b8e50d9bb0e62ae
+      internalID: -103708064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCave_Back_3
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3deb516e88b3e8c43808dcf4e8e2758b
-      internalID: -225841026
+      spriteID: 37fab0e7800826d4ea27b4c8863c7f3e
+      internalID: 673948977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow_Back_1
+      name: IceCave_Back_4
       rect:
         serializedVersion: 2
         x: 32
@@ -152,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 301adade2ece59445abb0e16c794fcbb
-      internalID: 1944016936
+      spriteID: 81b5c86cac31ccc41939f689cdf19b50
+      internalID: -1212412093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow_Back_2
+      name: IceCave_Back_5
       rect:
         serializedVersion: 2
         x: 64
@@ -173,35 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7bcac97d2640fb44853faf53f169e3f
-      internalID: 2034632083
+      spriteID: 2635c10dc39842144b6c996d7a13b7e0
+      internalID: -1340098091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow_Back_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1f36b129d900a274ab281bd6096c4920
-      internalID: -1619665470
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snow_Back_4
+      name: IceCave_Back_6
       rect:
         serializedVersion: 2
         x: 0
@@ -215,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a853bb89da8ee954eb844142cc0a5e38
-      internalID: 985770101
+      spriteID: ad9f8a929629ed540b566aa880a58178
+      internalID: 2064831307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow_Back_5
+      name: IceCave_Back_7
       rect:
         serializedVersion: 2
         x: 32
@@ -236,14 +278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 661fa68279baf564ab5c7a58c41fc582
-      internalID: -2059414753
+      spriteID: 2aab10c7758c73e46be5798e066f48f9
+      internalID: 192354899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow_Back_6
+      name: IceCave_Back_8
       rect:
         serializedVersion: 2
         x: 64
@@ -257,35 +299,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82978c1a719a6dc438cf7db971c479f0
-      internalID: 107862343
+      spriteID: e28b10320e2c23b4f9753c1a43236f73
+      internalID: -419487847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow_Back_7
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 506bd92f0dc308442bb1cba7e7b0974a
-      internalID: 1531760093
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snow_Back_8
+      name: IceCave_Back_9
       rect:
         serializedVersion: 2
         x: 0
@@ -299,14 +320,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ccd985cd2893a14faf50476e9b71e3a
-      internalID: 1494557448
+      spriteID: 7b0450c13aa2b5e4caee8d91bda45b00
+      internalID: -1585341617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow_Back_9
+      name: IceCave_Back_10
       rect:
         serializedVersion: 2
         x: 32
@@ -320,14 +341,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af9b6dbdfab179548a901ad186e17980
-      internalID: 1196646901
+      spriteID: a9c3db7dd222e2243845e2a98c63ecf0
+      internalID: 1966270968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snow_Back_10
+      name: IceCave_Back_11
       rect:
         serializedVersion: 2
         x: 64
@@ -341,29 +362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3f5f321de524e743944249775d25c5e
-      internalID: -1549361550
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snow_Back_11
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 74d401333e3e5e34bbc0f59068ae59a5
-      internalID: 1021367489
+      spriteID: e9655b425ca47364490e01b000ce0cf3
+      internalID: 380175319
       vertices: []
       indices: 
       edges: []
@@ -379,21 +379,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Snow_Back_7: 1531760093
-      Snow_Back_4: 985770101
-      Snow_Back_10: -1549361550
-      Snow_Back_9: 1196646901
-      Snow_Back_6: 107862343
-      Snow_Back_8: 1494557448
-      Snow_Back_3: -1619665470
-      Snow_Back_11: 1021367489
-      Snow_Back_5: -2059414753
-      Snow_Back_2: 2034632083
-      Snow_Back_1: 1944016936
-      Snow_Back_0: -225841026
+      IceCave_Back_3: 673948977
+      IceCave_Back_11: 380175319
+      IceCave_Back_2: -103708064
+      IceCave_Back_6: 2064831307
+      IceCave_Back_0: 1537525355
+      IceCave_Back_7: 192354899
+      IceCave_Back_9: -1585341617
+      IceCave_Back_5: -1340098091
+      IceCave_Back_10: 1966270968
+      IceCave_Back_4: -1212412093
+      IceCave_Back_8: -419487847
+      IceCave_Back_1: 1178803164
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
+  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
