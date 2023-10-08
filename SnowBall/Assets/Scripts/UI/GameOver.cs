@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
+    public void SelectStage() => UI_Mng.LoadUI(UI.StageSelect);
+
     public void ReStartGame() => GameMng.ReStart();
 }

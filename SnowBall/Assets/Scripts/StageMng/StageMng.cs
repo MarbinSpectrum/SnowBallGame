@@ -17,7 +17,8 @@ public class StageMng : MonoBehaviour, MngInter
     }
 
     private static Dictionary<int, string> stageData = new Dictionary<int, string>();
-    private static Dictionary<string, int> stageNum = new Dictionary<string, int>();
+    private static Dictionary<string, int> stageNum  = new Dictionary<string, int>();
+
     public static void LoadStageData()
     {
         //,자 형식으로 저장된 csv파일을 읽는다.
@@ -76,6 +77,14 @@ public class StageMng : MonoBehaviour, MngInter
     {
         int stageNum = GetStageNumber() + 1;
         string stageName = GetStageName(stageNum);
+        SceneManager.LoadScene(stageName);
+    }
+
+    public static void GoStage(int idx)
+    {
+        if (stageData.ContainsKey(idx) == false)
+            return;
+        string stageName = GetStageName(idx);
         SceneManager.LoadScene(stageName);
     }
 }

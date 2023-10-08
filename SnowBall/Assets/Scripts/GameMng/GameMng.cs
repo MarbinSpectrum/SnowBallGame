@@ -8,7 +8,7 @@ public class GameMng : MonoBehaviour, MngInter
 {
     public static GameMng Instance;
 
-    private static PlayData playData;
+    public static PlayData playData { private set; get; }
 
     public static int nowStar;
 
@@ -72,8 +72,8 @@ public class GameMng : MonoBehaviour, MngInter
         int stageNum = StageMng.GetStageNumber();
 
         //해당 스테이지별 갱신
-        int maxStar = playData.stageStar[stageNum];
-        playData.stageStar[stageNum] = Mathf.Max(maxStar, nowStar);
+        int maxStar = playData.stageStar[stageNum - 1];
+        playData.stageStar[stageNum - 1] = Mathf.Max(maxStar, nowStar);
 
         //클리어 스테이지 갱신
         playData.clearStage = Mathf.Max(playData.clearStage, stageNum);

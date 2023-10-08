@@ -24,6 +24,13 @@ public class Mng : MonoBehaviour
         {
             loadData = true;
 
+#if UNITY_IOS || UNITY_ANDROID
+            Application.targetFrameRate = 60;
+
+#else
+            QualitySettings.vSyncCount = 1;
+#endif
+
             stageMng.LoadMng();
             uiMng.LoadMng();
             controlMng.LoadMng();

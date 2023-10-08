@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [HideInInspector] public    Rigidbody2D        rb;
-    [HideInInspector] public    CircleCollider2D   col;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public CircleCollider2D col;
 
-    [SerializeField] private    Ball_Data           ballData;
-    [SerializeField] private    SoundObj           jumpSound;
-    [SerializeField] private    SoundObj           downSound;
+    [SerializeField] private Ball_Data ballData;
+    [SerializeField] private SoundObj jumpSound;
+    [SerializeField] private SoundObj downSound;
 
     private const float COLLIDER_SIZE = 0.45f;
-
+    private bool downSoundFlag = false;
     public RaycastHit2D isGround { get; private set; }
     public RaycastHit2D isShadow { get; private set; }
-    public RaycastHit2D isSnow   { get; private set; }
+    public RaycastHit2D isSnow { get; private set; }
+    public Vector3 objPos { get => transform.position; }
 
     private void Awake()
     {
-        rb  = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         rb.sharedMaterial.bounciness = ballData.bounciness;
-        rb.sharedMaterial.friction   = ballData.friction;
+        rb.sharedMaterial.friction = ballData.friction;
 
-        col = GetComponent<CircleCollider2D>();      
+        col = GetComponent<CircleCollider2D>();
     }
 
     private void Update()
@@ -31,7 +32,7 @@ public class Ball : MonoBehaviour
         isGround = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y - 0.1f) +
             new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
-            col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("Ground"));
+            col.radius * transform.localScale.x * 0.8f, Vector2.zero, 0, 1 << LayerMask.NameToLayer("Ground"));
 
         isShadow = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y) +
@@ -43,35 +44,68 @@ public class Ball : MonoBehaviour
             new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
             col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("SnowZone"));
 
-        float size = transform.localScale.x;
+        UpdateSunEffect();
+        UpdateDownSound();
+        UpdateSnowSize();
+    }
 
-        if(isSnow)
-        {
-            size += Time.timeScale * ballData.erectionValue;
-            size = Mathf.Min(1, size);
-            transform.localScale = Vector3.one * size;
-            if(isGround)
-            {
-                transform.position += Vector3.up* Time.timeScale * ballData.erectionValue;
-            }
-        }
-        else if (isShadow == false)
-        {
-            size -= Time.timeScale * ballData.meltValue;
-            transform.localScale = Vector3.one * size;
-            if (isGround)
-            {
-                transform.position -= Vector3.up * Time.timeScale * ballData.meltValue * 0.5f;
-            }
-        }
-
-        if(isShadow)
+    private void UpdateSunEffect()
+    {
+        if (isShadow)
         {
             SunEffect.OffEffect();
         }
         else
         {
             SunEffect.RunEffect();
+        }
+    }
+
+    private void UpdateDownSound()
+    {
+        if (isGround)
+        {
+            if (rb.velocity.y <= 0 && Mathf.Abs(rb.velocity.y) > 1f)
+            {
+                if (downSoundFlag == false)
+                {
+                    downSoundFlag = true;
+                    downSound.Play();
+                }
+            }
+        }
+        else
+        {
+            downSoundFlag = false;
+        }
+    }
+
+    private void UpdateSnowSize()
+    {
+        float size = transform.localScale.x;
+
+        if (isSnow)
+        {
+            //눈 안에 있다.
+            //눈사람의 크기가 커진다.
+            size += Time.timeScale * ballData.erectionValue;
+            size = Mathf.Min(1, size);
+            transform.localScale = Vector3.one * size;
+            if (isGround)
+            {
+                transform.position += Vector3.up * Time.timeScale * ballData.erectionValue;
+            }
+        }
+        else if (isShadow == false)
+        {
+            //그림자 밖에 있다.
+            //눈사람의 크기가 작아진다.
+            size -= Time.timeScale * ballData.meltValue;
+            transform.localScale = Vector3.one * size;
+            if (isGround)
+            {
+                transform.position -= Vector3.up * Time.timeScale * ballData.meltValue * 0.5f;
+            }
         }
 
         col.radius = COLLIDER_SIZE * size;
@@ -84,8 +118,6 @@ public class Ball : MonoBehaviour
         }
     }
 
-    public Vector3 objPos { get => transform.position; }
-
     public void Push(Vector2 force)
     {
         if (rb == null)
@@ -94,7 +126,7 @@ public class Ball : MonoBehaviour
         //물체에 force만큼의 힘을 준다.
         rb.AddForce(force, ForceMode2D.Impulse);
 
-        float distance = Vector2.Distance(Vector2.zero, force) 
+        float distance = Vector2.Distance(Vector2.zero, force)
             * transform.localScale.x * ballData.rotateValue;
 
         if (force.x > 0)
@@ -125,10 +157,12 @@ public class Ball : MonoBehaviour
         rb.isKinematic = true;
     }
 
-    public void DownSound()
+    public void StopControll()
     {
-        downSound.Play();
+        ControlMng.Instance.StopControll();
+        isGround = new RaycastHit2D();
     }
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {

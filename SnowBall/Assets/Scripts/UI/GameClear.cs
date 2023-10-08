@@ -33,5 +33,7 @@ public class GameClear : MonoBehaviour
 
     public void ReStartGame() => GameMng.ReStart();
 
+    public void SelectStage() => UI_Mng.LoadUI(UI.StageSelect);
+
     public void GoNextStage() => StageMng.GoNextStage();
 }

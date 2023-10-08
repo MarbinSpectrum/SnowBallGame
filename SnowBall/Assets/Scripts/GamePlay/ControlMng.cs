@@ -3,9 +3,10 @@ using UnityEngine;
 public class ControlMng : MonoBehaviour, MngInter
 {
     public static ControlMng Instance;
+    public static Ball ball { get; private set; }
+
     public void LoadMng() => Instance = this;
 
-    private Ball ball;
     public Trajectory trajectory;
 
     [SerializeField]
@@ -26,7 +27,6 @@ public class ControlMng : MonoBehaviour, MngInter
     private float distance;
 
     public bool  canControll { get; private set; }
-    private bool downSoundFlag = false;
 
     private void Update()
     {
@@ -61,13 +61,7 @@ public class ControlMng : MonoBehaviour, MngInter
                 float len = Vector2.Distance(Vector2.zero, ball.rb.velocity);
                 len = Mathf.Pow(len, decelerationValue);
                 Vector2 velocityVec2 = ball.rb.velocity.normalized*len;
-                ball.rb.velocity = velocityVec2;
-                
-                if(downSoundFlag == false)
-                {
-                    downSoundFlag = true;
-                    ball.DownSound();
-                }
+                ball.rb.velocity = velocityVec2;           
             }
 
             float velocity = Vector2.Distance(Vector2.zero, ball.rb.velocity);
@@ -77,23 +71,18 @@ public class ControlMng : MonoBehaviour, MngInter
                 canControll = true;
             }
         }
-        else
-        {
-            downSoundFlag = false;
-        }
     }
 
     public static void lnit()
     {
-        GameObject ball = GameObject.Find("Ball");
-        if (ball != null)
+        GameObject ballObj = GameObject.Find("Ball");
+        if (ballObj != null)
         {
-            Instance.ball = ball.GetComponent<Ball>();
-            Instance.ball.DesactivateRb();
+            ball = ballObj.GetComponent<Ball>();
+            ball.DesactivateRb();
         }
 
         Instance.canControll = true;
-        Instance.downSoundFlag = false;
     }
 
     //-Drag-----------------------------------------------
@@ -119,11 +108,15 @@ public class ControlMng : MonoBehaviour, MngInter
 
     private void OnDragEnd()
     {
-        ball.ActivateRb();
+        StopControll();
         ball.Push(force);
+    }
 
+    //-Controll-----------------------------------------------
+    public void StopControll()
+    {
+        ball.ActivateRb();
         trajectory.Hide();
-
         canControll = false;
     }
 }

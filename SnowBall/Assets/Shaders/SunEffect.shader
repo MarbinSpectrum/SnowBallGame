@@ -16,7 +16,8 @@ Shader "Custom/SunEffect"
         Tags{ "Queue" = "Transparent" }
 
         GrabPass
-        {   
+        {  
+
         }
 
         Pass
