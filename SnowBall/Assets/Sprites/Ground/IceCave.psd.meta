@@ -587,7 +587,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -608,7 +608,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -616,6 +616,69 @@ TextureImporter:
       bones: []
       spriteID: 1b41c09e34e7569469d603b1f3bb8972
       internalID: -2000147761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCave_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2ca3d0f1dacda64d9a937f68c457320
+      internalID: -1567061257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCave_3
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8302b8752c415d54082d6a14c857dc3d
+      internalID: -651263962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IceCave_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a58566dd7373c649acc49bd02dec79c
+      internalID: 2078031914
       vertices: []
       indices: 
       edges: []
@@ -638,8 +701,10 @@ TextureImporter:
       Ice_Cave_17: -1235305082
       Ice_Cave_15: 506684257
       Ice_Cave_21: -1287455950
+      IceCave_2: -1567061257
       Ice_Cave_7: -796626184
       Ice_Cave_0: 1066952949
+      IceCave_3: -651263962
       Ice_Cave_2: -1482075958
       Ice_Cave_6: -185384314
       Ice_Cave_16: 952532966
@@ -655,6 +720,7 @@ TextureImporter:
       Ice_Cave_12: 154162425
       Ice_Cave_19: -1344471861
       Ice_Cave_8: -2061404335
+      IceCave_4: 2078031914
   spritePackingTag: 
   pSDRemoveMatte: 1
   pSDShowRemoveMatteOption: 1
