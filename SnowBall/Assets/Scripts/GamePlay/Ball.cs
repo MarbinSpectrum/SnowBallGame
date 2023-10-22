@@ -44,21 +44,8 @@ public class Ball : MonoBehaviour
             new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
             col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("SnowZone"));
 
-        UpdateSunEffect();
         UpdateDownSound();
         UpdateSnowSize();
-    }
-
-    private void UpdateSunEffect()
-    {
-        if (isShadow)
-        {
-            SunEffect.OffEffect();
-        }
-        else
-        {
-            SunEffect.RunEffect();
-        }
     }
 
     private void UpdateDownSound()
