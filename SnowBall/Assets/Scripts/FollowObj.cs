@@ -9,7 +9,16 @@ public class FollowObj : MonoBehaviour
     private void Update()
     {
         if (followObj == null)
+        {
+            gameObject.SetActive(false);
             return;
+        }
+
+        if(followObj.gameObject.activeSelf == false)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         Vector2 pos = followObj.position;
         transform.position = pos;
     }

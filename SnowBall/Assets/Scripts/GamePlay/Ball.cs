@@ -10,11 +10,12 @@ public class Ball : MonoBehaviour
     [SerializeField] private Ball_Data ballData;
     [SerializeField] private SoundObj jumpSound;
     [SerializeField] private SoundObj downSound;
-
+    [SerializeField] private bool shadowStage;
     private const float COLLIDER_SIZE = 0.45f;
     private bool downSoundFlag = false;
     public RaycastHit2D isGround { get; private set; }
     public RaycastHit2D isShadow { get; private set; }
+    public RaycastHit2D isLight { get; private set; }
     public RaycastHit2D isSnow { get; private set; }
     public Vector3 objPos { get => transform.position; }
 
@@ -38,6 +39,11 @@ public class Ball : MonoBehaviour
             new Vector2(transform.position.x, transform.position.y) +
             new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
             col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("Shadow"));
+
+        isLight = Physics2D.CircleCast(
+            new Vector2(transform.position.x, transform.position.y) +
+            new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
+            col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("Light"));
 
         isSnow = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y) +
@@ -83,7 +89,7 @@ public class Ball : MonoBehaviour
                 transform.position += Vector3.up * Time.timeScale * ballData.erectionValue;
             }
         }
-        else if (isShadow == false)
+        else if ((shadowStage == false && isShadow == false) || (shadowStage && isLight))
         {
             //그림자 밖에 있다.
             //눈사람의 크기가 작아진다.
