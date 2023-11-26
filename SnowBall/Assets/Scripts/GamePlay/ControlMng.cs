@@ -11,12 +11,12 @@ public class ControlMng : MonoBehaviour, MngInter
 
     [SerializeField]
     private float pushForce = 4f;
-    [SerializeField]
-    private float stopVelocity = 2f;
+
+    public float stopVelocity = 2f;
     [SerializeField]
     private float distanceMax = 4f;
-    [SerializeField, Range(0, 1f)]
-    private float decelerationValue = 0.1f;
+    [Range(0, 1f)]
+    public float decelerationValue = 0.1f;
 
     private bool isDragging = false;
 
@@ -33,7 +33,14 @@ public class ControlMng : MonoBehaviour, MngInter
         if (ball == null || ball.gameObject.activeSelf == false)
         {
             //캐릭터 객체가 없어서 조종불가
+            canControll = false;
             return;
+        }
+
+        float velocity = Vector2.Distance(Vector2.zero, ball.rb.velocity);
+        if (ball.isGround && velocity < stopVelocity)
+        {
+            canControll = true;
         }
 
         if (canControll)
@@ -54,23 +61,7 @@ public class ControlMng : MonoBehaviour, MngInter
                 OnDrag();
             }
         }
-        else if(ball.isGround)
-        {
-            if(ball.rb.velocity.y <= 0)
-            {
-                float len = Vector2.Distance(Vector2.zero, ball.rb.velocity);
-                len = Mathf.Pow(len, decelerationValue);
-                Vector2 velocityVec2 = ball.rb.velocity.normalized*len;
-                ball.rb.velocity = velocityVec2;           
-            }
 
-            float velocity = Vector2.Distance(Vector2.zero, ball.rb.velocity);
-            if (velocity < stopVelocity)
-            {
-                ball.DesactivateRb();
-                canControll = true;
-            }
-        }
     }
 
     public static void lnit()
@@ -79,7 +70,6 @@ public class ControlMng : MonoBehaviour, MngInter
         if (ballObj != null)
         {
             ball = ballObj.GetComponent<Ball>();
-            ball.DesactivateRb();
         }
 
         Instance.canControll = true;
@@ -88,7 +78,6 @@ public class ControlMng : MonoBehaviour, MngInter
     //-Drag-----------------------------------------------
     private void OnDragStart()
     {
-        ball.DesactivateRb();
         startPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         trajectory.Show();
@@ -98,7 +87,7 @@ public class ControlMng : MonoBehaviour, MngInter
     {
         endPoint    = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         distance    = Vector2.Distance(startPoint, endPoint);
-        distance = Mathf.Min(distanceMax, distance);
+        distance    = Mathf.Min(distanceMax, distance);
 
         direction   = (startPoint - endPoint).normalized;
         force       = direction * distance * pushForce;
@@ -115,7 +104,6 @@ public class ControlMng : MonoBehaviour, MngInter
     //-Controll-----------------------------------------------
     public void StopControll()
     {
-        ball.ActivateRb();
         trajectory.Hide();
         canControll = false;
     }

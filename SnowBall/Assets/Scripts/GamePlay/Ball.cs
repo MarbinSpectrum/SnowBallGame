@@ -30,6 +30,14 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
+        UpdateCast();
+        UpdateVelocity();
+        UpdateDownSound();
+        UpdateSnowSize();
+    }
+
+    private void UpdateCast()
+    {
         isGround = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y - 0.1f) +
             new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
@@ -49,13 +57,37 @@ public class Ball : MonoBehaviour
             new Vector2(transform.position.x, transform.position.y) +
             new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
             col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("SnowZone"));
+    }
 
-        UpdateDownSound();
-        UpdateSnowSize();
+    private void UpdateVelocity()
+    {
+        if (isGround ==false)
+        {
+            //땅이 아니면 감속 안함
+            return;
+        }
+
+        ControlMng controlMng = ControlMng.Instance;
+        float velocity = Vector2.Distance(Vector2.zero, rb.velocity);
+        if (velocity < controlMng.stopVelocity)
+        {
+            //특정 가속도이하면 멈춘다.
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0;
+        }
+        else if(rb.velocity.y <= 0)
+        {
+            //감속
+            velocity *= controlMng.decelerationValue;
+            Vector2 velocityVec2 = rb.velocity.normalized * velocity;
+            rb.velocity = velocityVec2;
+            rb.angularVelocity *= controlMng.decelerationValue;
+        }
     }
 
     private void UpdateDownSound()
     {
+        //땅 효과음 처리
         if (isGround)
         {
             if (rb.velocity.y <= 0 && Mathf.Abs(rb.velocity.y) > 1f)
@@ -75,6 +107,7 @@ public class Ball : MonoBehaviour
 
     private void UpdateSnowSize()
     {
+        //눈 크기처리
         float size = transform.localScale.x;
 
         if (isSnow)
@@ -128,26 +161,6 @@ public class Ball : MonoBehaviour
             rb.AddTorque(distance);
 
         jumpSound.Play();
-    }
-
-    public void ActivateRb()
-    {
-        //물체 물리 활성화
-        if (rb == null)
-            return;
-
-        rb.isKinematic = false;
-    }
-
-    public void DesactivateRb()
-    {
-        //물체 물리 비활성화
-        if (rb == null)
-            return;
-
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = 0f;
-        rb.isKinematic = true;
     }
 
     public void StopControll()

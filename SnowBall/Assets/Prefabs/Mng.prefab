@@ -372,9 +372,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trajectory: {fileID: 4170474710329472510}
   pushForce: 4
-  stopVelocity: 2
+  stopVelocity: 0.2
   distanceMax: 4
-  decelerationValue: 0.93
+  decelerationValue: 0.85
 --- !u!1 &4170474710736618758
 GameObject:
   m_ObjectHideFlags: 0

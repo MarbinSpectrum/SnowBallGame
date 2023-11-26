@@ -67,7 +67,9 @@ public class Trajectory : MonoBehaviour
 			pos.x = (ballPos.x + forceApplied.x * timeStamp);
 			pos.y = (ballPos.y + forceApplied.y * timeStamp) - (Physics2D.gravity.magnitude * timeStamp * timeStamp) / 2f;
 
-			if(notGrond && i >= 1)
+
+
+			if (notGrond && i >= 1)
 			{ 
 				RaycastHit2D isGround = Physics2D.Linecast(
 					dotsList[i - 1].transform.position, pos,
