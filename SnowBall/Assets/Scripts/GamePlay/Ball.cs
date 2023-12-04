@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private Ball_Data ballData;
     [SerializeField] private SoundObj jumpSound;
     [SerializeField] private SoundObj downSound;
-    [SerializeField] private bool shadowStage;
+    public bool shadowStage;
     private const float COLLIDER_SIZE = 0.45f;
     private bool downSoundFlag = false;
     public RaycastHit2D isGround { get; private set; }
@@ -31,6 +31,7 @@ public class Ball : MonoBehaviour
     private void Update()
     {
         UpdateCast();
+        UpdateTransParent();
         UpdateVelocity();
         UpdateDownSound();
         UpdateSnowSize();
@@ -39,7 +40,7 @@ public class Ball : MonoBehaviour
     private void UpdateCast()
     {
         isGround = Physics2D.CircleCast(
-            new Vector2(transform.position.x, transform.position.y - 0.1f) +
+            new Vector2(transform.position.x, transform.position.y - 0.2f) +
             new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
             col.radius * transform.localScale.x * 0.8f, Vector2.zero, 0, 1 << LayerMask.NameToLayer("Ground"));
 
@@ -57,6 +58,20 @@ public class Ball : MonoBehaviour
             new Vector2(transform.position.x, transform.position.y) +
             new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
             col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("SnowZone"));
+    }
+
+    private void UpdateTransParent()
+    {
+        if(isGround)
+        {
+            //움직이는 플렛폼위에 올라섰을때의 처리를 위해 이렇게 처리한다.
+            transform.parent = isGround.transform;
+        }
+        else
+        {
+            //땅위가 아니라면 다시 나간다.
+            transform.parent = null;
+        }
     }
 
     private void UpdateVelocity()
@@ -108,7 +123,7 @@ public class Ball : MonoBehaviour
     private void UpdateSnowSize()
     {
         //눈 크기처리
-        float size = transform.localScale.x;
+        float size = Mathf.Abs(transform.localScale.x);
 
         if (isSnow)
         {
@@ -174,6 +189,7 @@ public class Ball : MonoBehaviour
     {
         if(collision.transform.gameObject.layer == LayerMask.NameToLayer("DeadZone"))
         {
+            Debug.Log("DeadZone");
             GameMng.GameOver();
             gameObject.SetActive(false);
         }

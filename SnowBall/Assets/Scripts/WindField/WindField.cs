@@ -8,6 +8,7 @@ public class WindField : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera vcam;
     [SerializeField] private Animation[] cloudAni0;
     [SerializeField] private Animation[] cloudAni1;
+    [SerializeField] private float startAniSpeed;
     [SerializeField] private float aniSpeed;
     [SerializeField] private float waitTime;
     [SerializeField] private float windTime;
@@ -17,6 +18,11 @@ public class WindField : MonoBehaviour
 
     private void Start()
     {
+        foreach (Animation ani in cloudAni0)
+            ani["Mountain_Cloud_0"].speed = startAniSpeed;
+        foreach (Animation ani in cloudAni1)
+            ani["Mountain_Cloud_1"].speed = startAniSpeed;
+
         transposer = vcam.GetCinemachineComponent<CinemachineTransposer>();
         StartCoroutine(WindCycle());
     }
@@ -38,15 +44,16 @@ public class WindField : MonoBehaviour
             yield return null;
 
             t += Time.deltaTime;
-            ControlMng.ball.rb.AddForce(new Vector2(-15, 0), ForceMode2D.Force);
+            if(t >= windTime *0.2f)
+                ControlMng.ball.rb.AddForce(new Vector2(-15, 0), ForceMode2D.Force);
         }
 
         transposer.m_FollowOffset = baseOffset;
 
         foreach (Animation ani in cloudAni0)
-            ani["Mountain_Cloud_0"].speed = 1;
+            ani["Mountain_Cloud_0"].speed = startAniSpeed;
         foreach (Animation ani in cloudAni1)
-            ani["Mountain_Cloud_1"].speed = 1;
+            ani["Mountain_Cloud_1"].speed = startAniSpeed;
 
         StartCoroutine(WindCycle());
     }
