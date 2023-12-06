@@ -10,6 +10,7 @@ public class StageSelect_Btn : MonoBehaviour
     [SerializeField] private Image[]            starList;
     [SerializeField] private Sprite[]           starImg;
     [SerializeField] private Image              lockImg;
+    [SerializeField] private Button             btn;
     private int stageNum;
 
     public void Set_Data(int pStageNum)
@@ -41,7 +42,17 @@ public class StageSelect_Btn : MonoBehaviour
 
         //스테이지 잠금
         //해결한 스테이지 + 1만큼 표시
-        lockImg.gameObject.SetActive(GameMng.playData.clearStage + 1 < stageNum);
+        if(GameMng.playData.clearStage + 1 < stageNum)
+        {
+            lockImg.gameObject.SetActive(true);
+            btn.enabled = false;
+
+        }
+        else
+        {
+            lockImg.gameObject.SetActive(false);
+            btn.enabled = true;
+        }
     }
 
     public void GoStage()

@@ -585,6 +585,7 @@ MonoBehaviour:
   - {fileID: 646750755, guid: 67d852294a9270c4494cd8e94d29da60, type: 3}
   - {fileID: 1820714829, guid: 67d852294a9270c4494cd8e94d29da60, type: 3}
   lockImg: {fileID: 2911492245828817241}
+  btn: {fileID: 675238539683861027}
 --- !u!114 &675238539683861027
 MonoBehaviour:
   m_ObjectHideFlags: 0

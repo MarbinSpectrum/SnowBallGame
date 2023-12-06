@@ -5695,7 +5695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e50a19d60719ae4e8bfe8d68d9cd028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: e7adfc1d963ccbf459081823d303d62c, type: 3}
+  clip: {fileID: 8300000, guid: fe1ac923984a8bb4c8e42eccb643f5f6, type: 3}
   playOnStart: 1
 --- !u!4 &1889109186
 Transform:

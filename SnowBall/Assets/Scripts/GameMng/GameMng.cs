@@ -52,9 +52,17 @@ public class GameMng : MonoBehaviour, MngInter
 
     public static void GameStart()
     {
-        nowStar = 0;
-        ControlMng.lnit();
-        UI_Mng.LoadUI(UI.StarCnt);
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "Title")
+        {
+            UI_Mng.LoadUI(UI.Title);
+        }
+        else
+        {
+            nowStar = 0;
+            ControlMng.lnit();
+            UI_Mng.LoadUI(UI.StarCnt);
+        }
     }
 
     public static void GameOver()

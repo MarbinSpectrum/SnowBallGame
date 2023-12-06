@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 0ac4281e462ff4c48ab4a6d45f173e2b
+  - enabled: 1
     path: Assets/Scenes/stage1.unity
     guid: b6901822df5d56e42a933698677f1919
   - enabled: 1
@@ -21,11 +24,20 @@ EditorBuildSettings:
     path: Assets/Scenes/stage5.unity
     guid: 6e8b05138e3d4d54fbbf7d397a9b4e3e
   - enabled: 1
+    path: Assets/Scenes/stage6.unity
+    guid: 3589f2cd9ae0a9a4c84690efb61f5f8c
+  - enabled: 1
     path: Assets/Scenes/stage7.unity
     guid: 16505656fabc25d4cacae381861f1e20
   - enabled: 1
-    path: Assets/Scenes/stage6.unity
-    guid: 3589f2cd9ae0a9a4c84690efb61f5f8c
+    path: Assets/Scenes/stage8.unity
+    guid: 65ccdbb6a1fa71e488978b188529e8ca
+  - enabled: 1
+    path: Assets/Scenes/stage9.unity
+    guid: 47591c35c9d596a44a3d9e5e0dd76fe7
+  - enabled: 1
+    path: Assets/Scenes/stage10.unity
+    guid: d8e0fea5fcb99d549b781b1ca799b058
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: af244073380cae04590af501ad8c3fb3, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: b6748252742da13469327409d191598d, type: 2}

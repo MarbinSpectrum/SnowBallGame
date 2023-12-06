@@ -9,7 +9,11 @@ public class SoundMng : MonoBehaviour, MngInter
     public void LoadMng()
     {
         Instance = this;
+
         LoadSound();
+
+        soundMute = (PlayerPrefs.GetInt("Mute", 0) == 1);
+        SetMute(soundMute);
     }
 
     private Dictionary<string, AudioClip> seMap = new Dictionary<string, AudioClip>();
@@ -17,6 +21,7 @@ public class SoundMng : MonoBehaviour, MngInter
 
     [SerializeField] private AudioSource se;
     [SerializeField] private AudioSource bgm;
+    public static bool soundMute { get; private set; }
 
     private void LoadSound()
     {
@@ -40,6 +45,12 @@ public class SoundMng : MonoBehaviour, MngInter
     {
         if (clip == null)
             return;
+        if (soundMute)
+        {
+            //음소거중
+            return;
+        }
+
         se.PlayOneShot(clip);
     }
 
@@ -58,5 +69,14 @@ public class SoundMng : MonoBehaviour, MngInter
             return;
         bgm.clip = clip;
         bgm.Play();
+    }
+
+    public static void SetMute(bool state)
+    {
+        soundMute = state;
+        Instance.bgm.mute = soundMute;
+        Instance.se.mute = soundMute;
+
+        PlayerPrefs.SetInt("Mute", state ? 1 : 0);
     }
 }

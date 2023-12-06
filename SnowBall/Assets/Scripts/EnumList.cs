@@ -12,4 +12,7 @@ public enum UI
 
     //** 별 UI **/
     StarCnt,
+
+    //** 타이틀 **/
+    Title
 }

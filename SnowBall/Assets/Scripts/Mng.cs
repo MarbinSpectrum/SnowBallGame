@@ -30,7 +30,6 @@ public class Mng : MonoBehaviour
 #else
             QualitySettings.vSyncCount = 1;
 #endif
-
             stageMng.LoadMng();
             uiMng.LoadMng();
             controlMng.LoadMng();
@@ -41,6 +40,5 @@ public class Mng : MonoBehaviour
 
             GameMng.GameStart();
         }
-
     }
 }
