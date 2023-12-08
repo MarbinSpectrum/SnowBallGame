@@ -30,6 +30,12 @@ public class ControlMng : MonoBehaviour, MngInter
 
     private void Update()
     {
+        if(GameMng.pause)
+        {
+            //게임 Pause상태
+            return;
+        }
+
         if (ball == null || ball.gameObject.activeSelf == false)
         {
             //캐릭터 객체가 없어서 조종불가

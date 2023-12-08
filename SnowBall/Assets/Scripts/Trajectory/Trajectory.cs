@@ -70,14 +70,23 @@ public class Trajectory : MonoBehaviour
 
 
 			if (notGrond && i >= 1)
-			{ 
-				RaycastHit2D isGround = Physics2D.Linecast(
-					dotsList[i - 1].transform.position, pos,
+			{
+				Ball ball = ControlMng.ball;
+				Vector2 dotPos = dotsList[i - 1].transform.position;
+				RaycastHit2D isGround0 = Physics2D.Linecast(
+					dotPos, pos,
 					LayerMask.GetMask("Ground"));
-				notGrond &= !isGround;
+				RaycastHit2D isGround1 = Physics2D.CircleCast(
+					dotPos + ball.col.offset * ball.transform.localScale.x,
+						ball.col.radius * transform.localScale.x, Vector2.zero, 0,
+					LayerMask.GetMask("Ground"));
+				notGrond &= !isGround0;
+				notGrond &= !isGround1;
+
 				dotsList[i].gameObject.SetActive(true);
-				if (isGround)
-					dotsList[i].position = isGround.point;
+
+				if (isGround0)
+					dotsList[i].position = isGround0.point;
 				else
 					dotsList[i].position = pos;
 			}

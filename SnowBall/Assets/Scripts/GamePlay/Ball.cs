@@ -30,6 +30,12 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
+        if (GameMng.pause)
+        {
+            //게임 Pause상태
+            return;
+        }
+
         UpdateCast();
         UpdateTransParent();
         UpdateVelocity();
@@ -46,17 +52,17 @@ public class Ball : MonoBehaviour
 
         isShadow = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y) +
-            new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
+            col.offset * transform.localScale.x,
             col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("Shadow"));
 
         isLight = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y) +
-            new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
+            col.offset * transform.localScale.x,
             col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("Light"));
 
         isSnow = Physics2D.CircleCast(
             new Vector2(transform.position.x, transform.position.y) +
-            new Vector2(col.offset.x, col.offset.y) * transform.localScale.x,
+            col.offset * transform.localScale.x,
             col.radius * transform.localScale.x, Vector2.zero, 0, 1 << LayerMask.NameToLayer("SnowZone"));
     }
 
@@ -151,7 +157,7 @@ public class Ball : MonoBehaviour
 
         col.radius = COLLIDER_SIZE * size;
 
-        if (size < 0.01f)
+        if (size < 0.15f)
         {
             gameObject.SetActive(false);
             GameMng.GameOver();

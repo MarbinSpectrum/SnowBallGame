@@ -10,9 +10,12 @@ public enum UI
     //** 스테이지 선택 **/
     StageSelect,
 
-    //** 별 UI **/
-    StarCnt,
+    //** 인게임 UI **/
+    InGame,
 
     //** 타이틀 **/
-    Title
+    Title,
+
+    //** 일시정지 **/
+    Pause
 }

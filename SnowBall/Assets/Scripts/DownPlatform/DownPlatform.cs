@@ -7,6 +7,7 @@ public class DownPlatform : MonoBehaviour
     private bool check = false;
     private bool run = false;
 
+    [SerializeField] private Animation      platformAni;
     [SerializeField] private Rigidbody2D    rigidbody2D;
     [SerializeField] private BoxCollider2D  boxCollider2D;
     [SerializeField] private BoxCollider2D  boxTrigger2D;
@@ -16,6 +17,7 @@ public class DownPlatform : MonoBehaviour
         if (check == false && collision.transform.gameObject.layer == LayerMask.NameToLayer("Ball"))
         {
             check = true;
+            platformAni.Play();
             Invoke("RunPlatForm", 2f);
         }
     }

@@ -11,7 +11,7 @@ public class GameMng : MonoBehaviour, MngInter
     public static PlayData playData { private set; get; }
 
     public static int nowStar;
-
+    public static bool pause;
     public void LoadMng()
     {
         Instance = this;
@@ -53,6 +53,7 @@ public class GameMng : MonoBehaviour, MngInter
     public static void GameStart()
     {
         Scene scene = SceneManager.GetActiveScene();
+        PauseGame(false);
         if (scene.name == "Title")
         {
             UI_Mng.LoadUI(UI.Title);
@@ -61,7 +62,21 @@ public class GameMng : MonoBehaviour, MngInter
         {
             nowStar = 0;
             ControlMng.lnit();
-            UI_Mng.LoadUI(UI.StarCnt);
+            UI_Mng.LoadUI(UI.InGame);
+        }
+    }
+
+    public static void PauseGame(bool state)
+    {
+        if(state)
+        {
+            pause = true;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            pause = false;
+            Time.timeScale = 1;
         }
     }
 
@@ -72,6 +87,7 @@ public class GameMng : MonoBehaviour, MngInter
 
     public static void ReStart()
     {
+        GameMng.PauseGame(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
