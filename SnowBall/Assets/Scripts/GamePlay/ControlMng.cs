@@ -84,15 +84,16 @@ public class ControlMng : MonoBehaviour, MngInter
     //-Drag-----------------------------------------------
     private void OnDragStart()
     {
-        startPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        startPoint = Input.mousePosition;
 
         trajectory.Show();
     }
 
     private void OnDrag()
     {
-        endPoint    = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        distance    = Vector2.Distance(startPoint, endPoint);
+        endPoint    = Input.mousePosition;
+        distance    = Vector2.Distance(Camera.main.ScreenToWorldPoint(startPoint),
+                                       Camera.main.ScreenToWorldPoint(endPoint));
         distance    = Mathf.Min(distanceMax, distance);
 
         direction   = (startPoint - endPoint).normalized;
