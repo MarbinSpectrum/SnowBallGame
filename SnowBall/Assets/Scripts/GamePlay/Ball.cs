@@ -10,6 +10,8 @@ public class Ball : MonoBehaviour
     [SerializeField] private Ball_Data ballData;
     [SerializeField] private SoundObj jumpSound;
     [SerializeField] private SoundObj downSound;
+    [SerializeField] private SoundObj starSound;
+
     public bool shadowStage;
     private const float COLLIDER_SIZE = 0.45f;
     private bool downSoundFlag = false;
@@ -207,6 +209,7 @@ public class Ball : MonoBehaviour
         else if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Star"))
         {
             collision.gameObject.SetActive(false);
+            starSound.Play();
             GameMng.nowStar++;
         }
     }
